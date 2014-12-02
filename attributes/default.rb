@@ -9,7 +9,7 @@ set[:elasticsearch][:download_url] = [
     node[:elasticsearch][:filename]
 ].join('/')
 
-set[:elasticsearch][:cluster][:name] = 'logstash'
+set[:elasticsearch][:cluster][:name] = 'elk-elasticsearch'
 
 set[:elasticsearch][:plugins]['karmi/elasticsearch-paramedic'] = {}
 set[:elasticsearch][:plugins]['royrusso/elasticsearch-HQ'] = {}
