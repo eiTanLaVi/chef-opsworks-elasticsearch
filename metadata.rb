@@ -7,5 +7,15 @@ long_description 'ElasticSearch OpsWorks'
 version          '0.1.0'
 
 
-depends 'opsworks_elasticsearch_cookbook'
+
+depends 'java'
+depends 'apt'
+depends 'ark'
+depends 'elasticsearch'
+depends 'elasticsearch::plugins'
+depends 'elasticsearch::aws'
+depends 'elasticsearch::proxy'
+depends 'layer-custom::esplugins'
+depends 'layer-custom::esmonit'
+depends 'layer-custom::cloudwatch-custom'
 depends 'opsworks_utils'
