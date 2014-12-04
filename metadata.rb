@@ -8,4 +8,4 @@ version          '0.1.0'
 
 
 depends 'opsworks_elasticsearch_cookbook'
-depends 'opsworks_utils', '~> 0.1.0'
+depends 'opsworks_utils'
