@@ -11,12 +11,22 @@ set[:elasticsearch][:download_url] = [
 
 set[:elasticsearch][:cluster][:name] = 'elk-elasticsearch'
 
+# force all memory to be locked, so the JVM doesn't swap memory with disk, crashing server performance
+set[:elasticsearch][:bootstrap][:mlockall] = true
+
+
 set[:elasticsearch][:plugins]['karmi/elasticsearch-paramedic'] = {}
 set[:elasticsearch][:plugins]['royrusso/elasticsearch-HQ'] = {}
 set[:elasticsearch][:plugins]['elasticsearch/elasticsearch-cloud-aws']['version'] = '2.2.0'
 
 set[:elasticsearch][:discovery][:type] = 'ec2'
 set[:elasticsearch][:discovery][:zen][:ping][:multicast][:enabled] = false
+
+#has some benefits according to this:    http://gibrown.com/2014/01/09/scaling-elasticsearch-part-1-overview/
+set[:elasticsearch][:discovery][:zen][:fd][:ping_interval] = '15s'
+set[:elasticsearch][:discovery][:zen][:fd][:ping_timeout] =  '60s'
+set[:elasticsearch][:discovery][:zen][:fd][:ping_retries] =  '5'
+
 set[:elasticsearch][:discovery][:ec2][:tag]['opsworks:stack'] = node[:opsworks][:stack][:name]
 set[:elasticsearch][:cloud][:aws][:region] = node[:opsworks][:instance][:region]
 
