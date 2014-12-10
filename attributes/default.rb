@@ -12,7 +12,9 @@ set[:elasticsearch][:download_url] = [
 set[:elasticsearch][:cluster][:name] = 'elk-elasticsearch'
 
 # force all memory to be locked, so the JVM doesn't swap memory with disk, crashing server performance
-set[:elasticsearch][:bootstrap][:mlockall] = true
+# this is better done though by going into the nodes to the /etc/sysctl.conf and adding the line vm.swappiness = 1
+# which still allows swaps in emergencies while blocking it from happenning otherwise
+# set[:elasticsearch][:bootstrap][:mlockall] = true
 
 
 set[:elasticsearch][:plugins]['karmi/elasticsearch-paramedic'] = {}
