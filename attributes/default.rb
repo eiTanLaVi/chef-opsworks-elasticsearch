@@ -37,3 +37,6 @@ set[:elasticsearch][:cloud][:aws][:region] = node[:opsworks][:instance][:region]
 set[:elasticsearch][:custom_config] = {
     'node.rack_id' => "#{node[:opsworks][:instance][:availability_zone]}"
 }
+
+allocated_memory = "#{(node.memory.total.to_i * 0.5 ).floor / 1024}m"
+set[:elasticsearch][:allocated_memory] = allocated_memory
